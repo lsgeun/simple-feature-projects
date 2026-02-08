@@ -1,0 +1,14 @@
+services:
+    db:
+        image: mysql:8.0
+        container_name: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root # 루트 비밀번호
+            MYSQL_DATABASE: orders # 생성할 DB 이름
+            MYSQL_USER: user # 일반 사용자
+            MYSQL_PASSWORD: user # 일반 사용자 비밀번호
+        ports:
+            - "3308:3306" # 호스트와 컨테이너 포트 매핑
+        volumes:
+            - ./volumes/mysql:/var/lib/mysql # 데이터 영속화
